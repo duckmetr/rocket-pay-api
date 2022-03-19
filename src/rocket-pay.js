@@ -16,8 +16,12 @@ class RocketPay {
   #endpoints() {
     return {
       version: '/version',
-      appInfo: '/app/info',
-      appTransfer: '/app/transfer'
+      app: {
+        info: '/app/info',
+        transfer: '/app/transfer',
+      },
+      multiCheques: '/multi-cheques',
+      tgInvoices: '/tg-invoices'
     }
   }
 
@@ -26,13 +30,53 @@ class RocketPay {
     return res.data
   }
 
-  async appInfo() {
-    const res = await this.api.get(this.#endpoints().appInfo)
+  async info() {
+    const res = await this.api.get(this.#endpoints().app.info)
     return res.data
   }
 
-  async appTransfer() {
-    const res = await this.api.get(this.#endpoints().appTransfer)
+  async transfer(data) {
+    const res = await this.api.post(this.#endpoints().app.transfer, data)
+    return res.data
+  }
+
+  async createMultiCheque(data) {
+    const res = await this.api.post(this.#endpoints().multiCheques, data)
+    return res.data
+  }
+
+  async getMultiCheques(limit, offset) {
+    const res = await this.api.get(this.#endpoints().multiCheques)
+    return res.data
+  }
+
+  async getMultiChequeInfo(id) {
+    const res = await this.api.get(`${this.#endpoints().multiCheques}/${id}`)
+    return res.data
+  }
+
+  async editMultiCheque(id, data) {
+    const res = await this.api.put(`${this.#endpoints().multiCheques}/${id}`, data)
+    return res.data
+  }
+
+  async deleteMultiCheque(id) {
+    const res = await this.api.delete(`${this.#endpoints().multiCheques}/${id}`)
+    return res.data
+  }
+
+  async createInvoice(data) {
+    const res = await this.api.post(this.#endpoints().tgInvoices, data)
+    return res.data
+  }
+
+  async getInvoices(limit, offset) {
+    const res = await this.api.get(this.#endpoints().tgInvoices)
+    return res.data
+  }
+
+  async getInvoiceInfo(id) {
+    const res = await this.api.get(`${this.#endpoints().tgInvoices}/${id}`)
     return res.data
   }
 }
