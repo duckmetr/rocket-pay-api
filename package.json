@@ -1,7 +1,7 @@
 {
   "name": "rocket-pay-api",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Cryptocurrency payment system based on @tonRocketBot",
   "main": "src/rocket-pay.js",
   "scripts": {
@@ -11,7 +11,12 @@
     "type": "git",
     "url": "git+https://github.com/duckmetr/rocket-pay-api.git"
   },
-  "keywords": ["ton", "rocket", "pay", "api"],
+  "keywords": [
+    "ton",
+    "rocket",
+    "pay",
+    "api"
+  ],
   "author": "duckmetr",
   "license": "MIT",
   "bugs": {
