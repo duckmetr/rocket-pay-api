@@ -2,7 +2,6 @@ import axios from 'axios'
 
 class RocketPay {
   constructor(token, options = {}) {
-    this.token = token
     this.api = axios.create({
       baseURL: options.hostname ?? 'https://pay.ton-rocket.com',
       headers: {
@@ -50,7 +49,7 @@ class RocketPay {
     return res.data
   }
 
-  async getMultiChequeInfo(id) {
+  async getMultiCheque(id) {
     const res = await this.api.get(`${this.#endpoints().multiCheques}/${id}`)
     return res.data
   }
@@ -75,7 +74,7 @@ class RocketPay {
     return res.data
   }
 
-  async getInvoiceInfo(id) {
+  async getInvoice(id) {
     const res = await this.api.get(`${this.#endpoints().tgInvoices}/${id}`)
     return res.data
   }
